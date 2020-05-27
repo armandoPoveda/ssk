@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Edit Course
+{% endblock %}
+
+{% block content %}
+	<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+		<h1>Edit Course</h1>
+
+		{{ include('course/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('course_index') }}">back to list</a>
+
+		{{ include('course/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

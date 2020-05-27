@@ -1,0 +1,12 @@
+framework:
+    default_locale: es
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks: ["es", "en"]
+           
+# framework:
+#     default_locale: "%locale%"
+#     translator:
+#         paths:
+#             - "%kernel.project_dir%/translations"
+#         fallbacks: ["es", "en"]

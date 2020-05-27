@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New ProductType
+{% endblock %}
+
+{% block content %}
+	<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+
+		<h1>Create new ProductType</h1>
+
+		{{ include('product_type/_form.html.twig') }}
+
+		<a href="{{ path('product_type_index') }}">back to list</a>
+	</div>
+{% endblock %}

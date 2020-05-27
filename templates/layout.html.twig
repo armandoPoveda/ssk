@@ -1,0 +1,143 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+		<header>
+			<nav class="navbar fixed-top navbar-expand-lg bg-primary"> <button data-target="#demo" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"><img style="margin-top: -30px; height: 90px; margin-left: -54px;" src="{{ asset('images/logo/SSK_TRANSPARENTE_NEGRO.png')}}"></span>
+			</button>
+
+			<div id="demo" class="collapse navbar-collapse">
+				<ul id="navigation" class="navbar-nav mr-auto navigation" style="margin-left: 16%;">
+
+					<li class="nav-item ">
+						<a href="{{ path('home') }}" class="white nav-link {{ app.request.get('_route') == 'home' ? 'border' }}">{% trans %}Home{% endtrans %}</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{path('shop')}}" class="white nav-link {{ app.request.get('_route') == 'shop' ? 'border' }}">{% trans %}Shop{% endtrans %}</a>
+					</li>
+					<li class="nav-item {{ app.request.get('_route') == 'course' ? 'border' }}">
+						<a class="white nav-link" href="{{path('course')}}">{% trans %}Course{% endtrans %}</a>
+					</li>
+					<li class="white nav-item {{ app.request.get('_route') == 'faq' ? 'border' }}">
+						<a class="white nav-link" href="{{path('faq')}}">{% trans %}Faq{% endtrans %}</a>
+					</li>
+					<li class="nav-item {{ app.request.get('_route') == 'contact' ? 'border' }}">
+						<a class="white nav-link" href="{{path('contact')}}">{% trans %}Contact{% endtrans %}</a>
+					</li>
+				</ul>
+				{% if app.user %}
+					{% if is_granted('ROLE_ADMIN') %}
+						<button style="margin-right: 50px;" type="button" class="boton5 btn btn-secondary btn-sm border" id="color-app">
+							<a class="white" href="/admin" id="">{{app.user.getUsername()}}</a>
+						</button>
+						<button type="button" class="boton5 btn btn-secondary btn-sm border" id="color-app">
+							<a class="white" href="/{{app.request.locale}}/logout" id="">{% trans %}Logout{% endtrans %}</a>
+						</button>
+					{% else %}
+						<button style="margin-right: 50px;" type="button" class="boton5 btn btn-secondary btn-sm border" id="color-app">
+							<a class="white" href="#" id="">{{app.user.getUsername()}}</a>
+						</button>
+						<button type="button" class="boton5 btn btn-secondary btn-sm border" id="color-app">
+							<a class="white" href="/{{app.request.locale}}/logout" id="">{% trans %}Logout{% endtrans %}</a>
+						</button>
+					{% endif %}
+				{% else %}
+					<button style="margin-right: 50px;" type="button" class="boton5 btn btn-secondary btn-sm border" id="color-app">
+						<a class=" white" href="#" id="login">{% trans %}Login{% endtrans %}</a>
+					</button>
+					<button type="button" class="boton5 btn btn-secondary btn-sm border" id="color-app">
+						<a class=" white" href="#" id="register">{% trans %}Resgiter{% endtrans %}</a>
+					</button>
+				{% endif %}
+				<div class="dropdown" style="margin-left: 18%;">
+					<button class="white btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans %}Language{% endtrans %}</button>
+					<div style="margin-left: 47%;background: transparent;border: none;" class="dropdown-menu" id="color-app">
+					
+						<a style="background: transparent;"  class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'es'}), app.request.get('_route_params') == 'es' ? 'active') }}"><img style="width:30%" src="{{ asset('images/translations/es.png') }}" alt=""></a>
+							<a style="background: transparent;" class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}), app.request.get('_route_params') == 'en' ? 'active') }}"><img style="width:30%" src="{{ asset('images/translations/en.png') }}" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</nav>
+
+				<div style="height: 248px;margin-top: -5%;" class="card text-center" id="color-app">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm d-inline-flex p-2">
+								<img class="" width="450" src="{{ asset('images/logo/SSK_TRANSPARENTE_BLANCO.png')}}">
+							</div>
+							<div class="col-sm d-flex align-items-center">
+								<h5 style="font-size: 2.5em;" class="card-title">{% trans %}Title{% endtrans %}</h5>
+							</div>
+							<div class="col-sm d-flex flex-row-reverse">
+								<div class="p-2"><img width="450" src="{{ asset('images/logo/SSK_TRANSPARENTE_BLANCO.png')}}"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<main style="min-height: 432px; margin-top: 2%;">
+				{% block content %}{% endblock %}
+			</main>
+			<footer>
+				<div class="card text-center" id="color-app">
+					<div class="card-body" style="margin-left: 120px;">
+						<div class="row">
+							<div class="col-sm">
+								<div class="text-white mb-3" style="max-width: 18rem;">
+									<h5 class="card-title">{% trans %}Ubi{% endtrans %}</h5>
+									<div>
+										<img src="{{ asset('images/maps/map.jpg')}}" width="91%">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="text-white mb-3" style="max-width: 18rem;">
+									<h5 class="card-title">{% trans %}ContactFoo{% endtrans %}</h5>
+									<div>
+										<span class="card-text">Calle Isabel la Católica 22 bajo</span><br>
+										<span class="card-text">Mislata</span>
+										<span class="card-text">Valencia</span>
+										<span class="card-text">46920</span><br>
+										<span class="card-text">656987485</span><br>
+										<span class="card-text">armandki@hotmail.com</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="text-white mb-3" style="max-width: 18rem;">
+									<h5 class="card-title">{% trans %}Links{% endtrans %}</h5>
+									<div id="navigation" class="navigation">
+										<a class="{{ app.request.get('_route') == 'home' ? 'border' }}" href="{{path('home')}}">
+											<span class="card-text white">{% trans %}Home{% endtrans %}</span><br></a>
+										<a class="{{ app.request.get('_route') == 'shop' ? 'border' }}" href="{{path('shop')}}">
+											<span class="card-text white">{% trans %}Shop{% endtrans %}</span><br></a>
+										<a class="{{ app.request.get('_route') == 'course' ? 'border' }}" href="{{path('course')}}">
+											<span class="card-text white">{% trans %}Course{% endtrans %}</span><br></a>
+										<a class="{{ app.request.get('_route') == 'faq' ? 'border' }}" href="{{path('faq')}}">
+											<span class="card-text white">{% trans %}Faq{% endtrans %}</span><br></a>
+										<a class="{{ app.request.get('_route') == 'contact' ? 'border' }}" href="{{path('contact')}}">
+											<span class="card-text white">{% trans %}Contact{% endtrans %}</span><br></a>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="text-white mb-3" style="max-width: 18rem;">
+									<h5 class="card-title">{% trans %}Copyright{% endtrans %}</h5>
+									{# <div> #}
+									<img
+									width="350" style="margin-top: -67px;margin-left: -22px;" src="{{ asset('images/logo/SSK_TRANSPARENTE_BLANCO.png')}}">
+								{# </div> #}
+								</div>
+							</div>
+						</div>
+					</div>
+				</footer>
+				{% block twig %}
+					{# modal register #}
+					{# modal login #}
+					{# {% set vars = {'error' : error} %} #}
+					{{include('register/modalRegister.html.twig')}}
+				{{include('security/login.html.twig', {app : null})}}
+			{% endblock %}
+		{% endblock %}

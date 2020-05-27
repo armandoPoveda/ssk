@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Faq
+{% endblock %}
+
+{% block content %}
+	<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+		<h1>Faq</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ faq.id }}</td>
+				</tr>
+				<tr>
+					<th>Question</th>
+					<td>{{ faq.question }}</td>
+				</tr>
+				<tr>
+					<th>Answer</th>
+					<td>{{ faq.answer }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('faq_index') }}">back to list</a><br>
+
+		<a href="{{ path('faq_edit', {'id': faq.id}) }}">edit</a>
+
+		{{ include('faq/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

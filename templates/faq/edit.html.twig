@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Edit Faq
+{% endblock %}
+
+{% block content %}
+	<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+
+		<h1>Edit Faq</h1>
+
+		{{ include('faq/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('faq_index') }}">back to list</a>
+
+		{{ include('faq/_delete_form.html.twig') }}
+
+	</div>
+{% endblock %}

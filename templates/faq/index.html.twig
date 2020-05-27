@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Faq index
+{% endblock %}
+
+{% block content %}
+	<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+		<h1>Faq index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Question</th>
+					<th>Answer</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for faq in faqs %}
+					<tr>
+						<td>{{ faq.id }}</td>
+						<td>{{ faq.question }}</td>
+						<td>{{ faq.answer }}</td>
+						<td>
+							<a href="{{ path('faq_show', {'id': faq.id}) }}">show</a>
+							<a href="{{ path('faq_edit', {'id': faq.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{{ path('admin') }}">back to admin</a><br>
+		<a href="{{ path('faq_new') }}">Create new</a>
+	</div>
+{% endblock %}

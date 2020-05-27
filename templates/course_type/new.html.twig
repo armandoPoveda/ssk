@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New CourseType{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+
+    <h1>Create new CourseType</h1>
+
+    {{ include('course_type/_form.html.twig') }}
+
+    <a href="{{ path('course_type_index') }}">back to list</a>
+</div>
+{% endblock %}

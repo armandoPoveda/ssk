@@ -1,0 +1,26 @@
+{# modal register #}
+<div id="modalRegister" class="modal" tabindex="-1" role="dialog" data-target="#modalRegister">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" id="color-app">
+			<div class="modal-header">
+				<h5 class="modal-title">Registrate</h5>
+			</div>
+			<div class="modal-body">
+				<form type="POST" action="{{ path('register')}}">
+					<label>Usuario</label>
+					<input type="text" required id="userNameRegister" name="userNameRegister" class="form-control" value="">
+					<label>Contraseña</label>
+					<input type="password" required name="passwordRegister" id="passwordRegister" class="form-control" value="">
+					<label>Repite contraseña</label>
+					<input type="password" required id="repeatPassword" name="repeatPassword" class="form-control" value=""><br>
+					<input type="checkbox" required id="checkbox" value="">
+					Acepto la política de privacidad
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" id="closeRegister" data-dismiss="modal">Cerrar</button>
+						<button type="submit" id="buttonRegister" class="btn btn-primary">Registrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

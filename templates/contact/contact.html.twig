@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+	{{title}}
+{% endblock %}
+{% block content %}
+	<div class="container" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+		<h5 class="card-title">{% trans %}Contact{% endtrans %}</h5>
+		<div class="container" id="color-app" style="margin-top:1%; margin-bottom:1%;padding:10px;">
+			{{form_start(formContact, {'attr': {'class': 'tm-contact-form', 'method' : 'POST'}})}}
+			<div class="form-group">
+				{{form_label(formContact.name, null, {'label':'Name' ,'attr' : {'class' : 'required'}})}}
+				{{form_widget(formContact.name, {'attr': {'style': 'width:20%', 'class' : 'form-control'}})}}
+			</div>
+			<div class="form-group">
+				{{form_label(formContact.surname, null, {'label':'SurName','attr' : {'class' : 'required'}})}}
+				{{form_widget(formContact.surname, {'attr': {'style': 'width:20%', 'class' : 'form-control'}})}}
+			</div>
+			<div class="form-group">
+				{{form_label(formContact.email, null, {'label':'Email','attr' : {'class' : 'required'}})}}
+				{{form_widget(formContact.email, {'attr': {'style': 'width:35%', 'class' : 'form-control'}})}}
+			</div>
+			<div class="form-group">
+				{{form_label(formContact.message, null, {'label':'Comment'})}}
+				{{form_widget(formContact.message, {'attr': {'style': 'width:100%', 'class' : 'form-control'}})}}
+			</div>
+			<div class="form-group">
+				{{form_widget(formContact.news, {'id' : 'Message', 'attr': {'class' : 'form-check-label'}})}}
+				{{form_label(formContact.news, null, {'label':'CheckBoxContact', 'attr' : {'class' : '"form-check-input'}})}}
+			</div>
+			{{form_widget(formContact.send, {'label':'ButtonSend',  'id' : 'buttonSend', 'attr': {'class':'btn btn-primary'}})}}
+			{{form_widget(formContact.cancel, {'label':'ButtonCancel', 'id' : 'buttonCancel', 'attr': {'class':'btn btn-primary'}})}}
+			{{form_end(formContact)}}
+		</div>
+	</div>
+{% endblock %}
